@@ -1,37 +1,25 @@
 <?php
 
 
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!pp
-|
-*/
+Route::view('/contact', "contact");
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/contact', function(){
-    return view("contact");
-});
+//Route::get('/jobs', [JobController::class, "index"]);
+//Route::get('/jobs/create', [JobController::class, "create"]);
+//Route::post("/jobs", [JobController::class, "store"]);
+//Route::get('/jobs/{job}', [JobController::class, "show"]);
+//Route::get('/jobs/{job}/edit', [JobController::class, "edit"]);
+//Route::patch('/jobs/{job}', [JobController::class, "update"]);
+//Route::delete('/jobs/{job}', [JobController::class, "destroy"]);
 
-Route::get('/jobs', function(){
-    return view("jobs", [
-        "jobs" => Job::with("employer")->paginate(3)
-    ]);
-});
+// This equal same this as below follow [index, create, store, show, edit, update, destroy]
 
-Route::get('/jobs/{id}', function($id){
-    $job = Job::find($id);
-    return view("job", [
-        "job" => $job
-    ]);
-});
+Route::resource("jobs",JobController::class);
+
+Route::get("/register", [RegisterUserController::class, "create"]);
+

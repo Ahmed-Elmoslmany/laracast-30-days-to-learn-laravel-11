@@ -30,6 +30,11 @@
                     Contact
                 </x-nav-link>
 
+
+                <x-nav-link type="a" href="/jobs/create" :active="request()->is('/create')">
+                    Create Job
+                </x-nav-link>
+
             </div>
           </div>
         </div>
@@ -109,8 +114,10 @@
   </nav>
 
   <header class="bg-white shadow">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between center content-center"  >
       <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+        <x-button href="/jobs/create" >Create Job</x-button>
+
     </div>
   </header>
   <main>
