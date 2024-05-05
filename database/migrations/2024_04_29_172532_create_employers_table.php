@@ -16,6 +16,7 @@ class CreateEmployersTable extends Migration
         Schema::create('employers', function (Blueprint $table) {
             $table->id();
             $table->string("company_name");
+            $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
     }
