@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,11 +36,11 @@ class JobController extends Controller
             "salary" => ["required", "min:3", "max:6"],
 
         ]);
-
+        $user = User::find(Auth::id());
         Job::create([
             "title" => request("title"),
             "salary" => request("salary"),
-            "employer_id" => 1
+            "employer_id" => $user->employer->id
         ]);
 
         return redirect("/jobs");

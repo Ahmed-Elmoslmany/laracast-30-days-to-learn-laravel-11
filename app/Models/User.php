@@ -14,7 +14,7 @@ class User extends Authenticatable
     protected $guarded = [];
 
     public function employer(){
-        return $this->hasOne(Employer::class);
+        return $this->hasOne(\App\Models\Employer::class);
     }
 
     /**

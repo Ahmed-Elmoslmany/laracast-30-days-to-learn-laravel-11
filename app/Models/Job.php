@@ -10,9 +10,10 @@ namespace App\Models;
 
     protected $fillable = ['title', "salary", "employer_id"];
 
- public function employer(){
-       return $this->belongsTo(Employer::class);
- }
+     public function employer()
+     {
+         return $this->belongsTo(\App\Models\Employer::class);
+     }
 
  public function tags(){
      return $this->belongsToMany(Tag::class, foreignPivotKey : "job_listing_id");
